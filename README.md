@@ -1,4 +1,4 @@
-# derico.odoo
+# derico.odoo_addons
 
 Ansible role to deploy and configure multiple Odoo addon's.
 It also set's symbolic links from the checked out repositories to Odoo's addons directory, to activate specific addon's of a repository.
