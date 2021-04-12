@@ -1,0 +1,7 @@
+odoo_rootdir: "/srv/odoo"
+odoo_version: 12.0
+odoo_workdir: "{{ odoo_rootdir }}/odoo{{ ( odoo_version | int ) }}"
+odoo_serverdir: "{{ odoo_workdir }}/server"
+odoo_addons_dir: "{{ odoo_rootdir }}/addons/{{ odoo_version }}/"
+odoo_addon_repos: []
+odoo_user: odoo

@@ -1,0 +1,9 @@
+---
+
+
+- include_tasks: addons.yml
+
+- include_tasks: symlinks.yml
+  loop: "{{ odoo_addon_repos }}"
+  loop_control:
+    loop_var: repo

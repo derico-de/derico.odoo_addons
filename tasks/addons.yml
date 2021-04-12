@@ -1,0 +1,21 @@
+---
+
+- name: "Clone addon repositories (Git) {{ repo.id }}"
+  become: yes
+  become_user: "{{ odoo_user }}"
+  git:  repo={{ repo.url }}
+        dest="{{ odoo_addons_dir }}/{{ repo.id }}"
+        version={{ repo.version | default(odoo_version, True) | string }}
+        update=yes
+        depth=1
+  loop: "{{ odoo_addon_repos }}"
+  loop_control:
+    loop_var: repo
+  # async: 120
+  # poll: 0
+  # register: clone_addon_repositories
+
+# - name: fix ownerchip of repos
+#   become: yes
+#   command: "chown -R {{ odoo_user }}:{{ odoo_user }} {{ odoo_addons_dir }}"
+

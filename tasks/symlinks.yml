@@ -1,0 +1,12 @@
+
+- name: "Create symbolic link: {{ symlink }}"
+  become: yes
+  become_user: "{{ odoo_user }}"
+  file:
+    src: "{{ odoo_addons_dir }}{{ '/'.join(symlink.split('/')) }}"
+    dest: "{{ odoo_serverdir }}/addons/{{ symlink.split('/')[-1] }}"
+    owner: "{{ odoo_user }}"
+    state: link
+  loop: "{{ repo.symlinks }}"
+  loop_control:
+    loop_var: symlink
